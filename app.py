@@ -31,17 +31,17 @@ def info():
 
 @APP.get("/metrica")
 def metrica():
-    cpu_usage_per_core = psutil.cpu_percent(percpu=True)
-    memory_used_mb = psutil.virtual_memory().used // 1024 ** 2
-    process_id = os.getpid()
-    operating_system = platform.platform()
+    cpu = psutil.cpu_percent(percpu=True)
+    memoria = psutil.virtual_memory().used // 1024 ** 2
+    pid_processo = os.getpid()
+    so = platform.platform()
 
     return json.dumps([
         {'metricas': {
-            "cpu_usage_per_core": cpu_usage_per_core,
-            "memory_used": f"{memory_used_mb} MB",
-            "process_id": process_id,
-            "operating_system": operating_system
+            "CPU": cpu,
+            "Memoria": f"{memoria} MB",
+            "PID Processo": pid_processo,
+            "SO": so
             }
         }
     ])
