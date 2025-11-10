@@ -24,12 +24,12 @@ def info():
     return json.dumps([
         {'integrantes': [
                 'Gustavo Lisboa',
-                'Vinicius'
+                'Vinicius Edivaldo'
             ]
         }
     ])
 
-@APP.get("/metrica")
+@APP.get("/metricas")
 def metrica():
     cpu = psutil.cpu_percent(percpu=True)
     memoria = psutil.virtual_memory().used // 1024 ** 2
@@ -38,6 +38,7 @@ def metrica():
 
     return json.dumps([
         {'metricas': {
+            "Nome": "Gustavo Lisboa e Vinicius Edivaldo",
             "CPU": cpu,
             "Memoria": f"{memoria} MB",
             "PID Processo": pid_processo,
